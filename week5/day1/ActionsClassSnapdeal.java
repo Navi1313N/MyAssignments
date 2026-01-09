@@ -24,26 +24,24 @@ public class ActionsClassSnapdeal {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		System.out.println("URL launched");
 
+		//hovering to mens fashion and selecting sports shoes
 		WebElement mensFasion = driver.findElement(By.xpath("(//div[@class='sc-98d0cbe0-3 dXWLks'])[1]"));
 		Actions act = new Actions(driver);
 		act.moveToElement(mensFasion).perform();
-		System.out.println("Mouse Hover to Men's Fasion");
-		
+		System.out.println("Mouse Hover to Men's Fasion");		
 		driver.findElement(By.xpath("//div[text()='Sports Shoes']")).click();
-		
+		//getting count of total result and extracting only numbers.
 		WebElement count = driver.findElement(By.xpath("//span[@class='category-name category-count']"));
 		String itemCount = count.getText().replaceAll("[^0-9]", "");
 		System.out.println("Total items of sports shoes: "+ itemCount);
-		
+		//applying sort by and selecting training shoes
 		driver.findElement(By.xpath("//div[text()='Training Shoes']")).click();
 		driver.findElement(By.xpath("//span[text()='Sort by:']")).click();
 		driver.findElement(By.xpath("//li[contains(.,'Low To High')]")).click();
 		
-		// need to write code to verify the sortby
-		
+		//Setting price limit using slidebar
 		WebElement maxPrice = driver.findElement(By.xpath("//a[contains(@class,'price-slider-scroll right-handle')]"));
 		WebElement sliderBar = driver.findElement(By.xpath("//div[@class='ui-slider-range ui-widget-header ui-corner-all']"));
-		
 		//gettting size and width of the price slide 
 		//setting off set location to -60 out of 100 to reduce the size.
 		//hoverin to max element and click & hold and moving to the given location -60
@@ -87,3 +85,4 @@ public class ActionsClassSnapdeal {
 	}
 
 }
+
